@@ -4,18 +4,26 @@ import sys
 import os
 
 
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sqlite_file = os.path.join(BASE_DIR, 'app/db.sqlite3') 
+sqlite_file = os.path.abspath(os.path.join(BASE_DIR, 'app/db.sqlite3')) 
+
+# If the system can't determine the path to DB uncomment the following line and provide the path to DB.
+# sqlite_file = os.path.abspath('<ABSOLUTE_PATH_TO_DB.SQLITE3>')
 
 conn = sqlite3.connect(sqlite_file)
 c = conn.cursor()
 
-
-####
-#  Create the required Table
-####
-
 table_name = 'vault'
+
+
+##########################################################
+
+####
+#  Create the required columns.[only used when using just this cli and not the django app]
+####
+
 
 # account_col = 'account' 
 # account_type = 'TEXT'
@@ -27,29 +35,10 @@ table_name = 'vault'
 # c.execute('CREATE TABLE {tn} ({nf} {ft} PRIMARY KEY,{nf2} {ft2}, {nf3} {ft3})'\
 #         .format(tn=table_name, nf=account_col, ft=account_type, nf2=user, ft2=user_type, nf3=passw, ft3=pass_type))
 
-# account = 'test1'
-
-
-# sys.exit()
-
-
 
 ##########################################
 
 
-
-
-
-# CRED = {
-# 	"buyold" : {
-# 		"user" : "sadmin",
-# 		"pass" : "admin123"
-# 	},
-# 	"vaxia" : {
-# 		"user" : "admin",
-# 		"pass" : "0aKdoxkkY0"
-# 	}
-# }
 if len(sys.argv) < 3:
 	print '''Usage: python app.py set/get <account>
 	'''
@@ -79,24 +68,9 @@ else:
 	else:
 	    print('Account {} does not exist'.format(account))
 
-
-
-	# sys.exit()
-	# if account in CRED:
-	# 	acc = CRED.get(account,'NO Account')
-	# 	c.execute("SELECT * FROM {tn} WHERE account = {account} "\
- #        .format(tn=table_name, account=account))
-	# 	# pyperclip.copy(acc.get('pass',''))
-	# else:
-	# 	print 'No Account named %s' % account
-
-
-
-
-
-##########################################################
-
-
-
 conn.commit()
 conn.close()
+
+
+def main():
+	pass

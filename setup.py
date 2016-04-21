@@ -33,4 +33,10 @@ setup(
         "argparse",
         "wsgiref"
     ],
+
+    entry_points={
+        'console_scripts': [
+            'getpass = cli.passman:main',
+        ],
+    },
 )
