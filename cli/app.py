@@ -1,12 +1,14 @@
 import sqlite3
 import pyperclip
 import sys
+import os
 
-sqlite_file = '../app/db.sqlite3' 
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sqlite_file = os.path.join(BASE_DIR, 'app/db.sqlite3') 
 
 conn = sqlite3.connect(sqlite_file)
 c = conn.cursor()
-
 
 
 ####
