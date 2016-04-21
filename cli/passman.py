@@ -15,7 +15,7 @@ c = conn.cursor()
 #  Create the required Table
 ####
 
-table_name = 'credentials'
+table_name = 'vault'
 
 # account_col = 'account' 
 # account_type = 'TEXT'
