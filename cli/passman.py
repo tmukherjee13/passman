@@ -73,7 +73,29 @@ conn.close()
 
 
 def get():
-	pass
+	c.execute("SELECT * FROM {tn} WHERE account = '{account}' "\
+        .format(tn=table_name, account=account))
+
+	cred = c.fetchone()
+
+
+	if cred:
+	    # print('{}'.format(cred))
+	    pyperclip.copy(cred[2])
+	    print 'Password copied to clipboard'
+	else:
+	    print('Account {} does not exist'.format(account))
+
+	conn.commit()
+	conn.close()
 
 def set():
-	pass
+	user,passwd = sys.argv[3].split('/')
+	try:
+	    c.execute("INSERT OR IGNORE INTO {tn} ('account', 'username', 'password') VALUES ('{acc}','{usr}', '{ps}')".\
+        	format(tn=table_name, acc=account, usr=user, ps=passwd))
+	except sqlite3.IntegrityError:
+	    print('ERROR: ID already exists in PRIMARY KEY column {}'.format(id_column))
+
+	conn.commit()
+	conn.close()
