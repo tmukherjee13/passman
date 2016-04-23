@@ -68,8 +68,8 @@ else:
 	else:
 	    print('Account {} does not exist'.format(account))
 
-conn.commit()
-conn.close()
+# conn.commit()
+# conn.close()
 
 
 def get():
