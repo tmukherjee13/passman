@@ -36,7 +36,8 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'getpass = cli.passman:main',
+            'getpass = cli.passman:get',
+            'setpass = cli.passman:set',
         ],
     },
 )
