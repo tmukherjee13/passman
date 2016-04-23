@@ -72,5 +72,8 @@ conn.commit()
 conn.close()
 
 
-def main():
+def get():
+	pass
+
+def set():
 	pass
