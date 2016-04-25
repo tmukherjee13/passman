@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+admin.site.site_header = 'Passman Admin'
+admin.site.site_title = 'Passman Admin'
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
